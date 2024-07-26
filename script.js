@@ -6,7 +6,7 @@ function initMap() {
     });
   
     const starIcon = {
-      url: 'https://maps.google.com/mapfiles/kml/paddle/red-stars.png', // スターアイコンのURL
+      url: 'https://maps.google.com/mapfiles/kml/paddle/red-stars.png', // 赤い星アイコンのURL
       scaledSize: new google.maps.Size(32, 32) // アイコンのサイズ
     };
   
@@ -90,12 +90,17 @@ function initMap() {
     let totalDistance = 0;
   
     function calculateDistance(userLat, userLng, answerLat, answerLng) {
+      console.log(`User Location: (${userLat}, ${userLng})`);
+      console.log(`Answer Location: (${answerLat}, ${answerLng})`);
+  
       const distanceInMeters = google.maps.geometry.spherical.computeDistanceBetween(
         new google.maps.LatLng(userLat, userLng),
         new google.maps.LatLng(answerLat, answerLng)
       );
   
       const distanceInKm = distanceInMeters / 1000; // メートルをキロメートルに変換
+      console.log(`Distance in Km: ${distanceInKm}`);
+  
       totalDistance += distanceInKm;
       totalDistanceElement.textContent = totalDistance.toFixed(2) + ' km';
     }
