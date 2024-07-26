@@ -33,16 +33,23 @@ body {
   
   #reset-button,
   #ok-button,
-  #confirm-pin-button {
+  #confirm-pin-button,
+  #restart-button {
     padding: 10px 20px;
     font-size: 16px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    margin-left: 10px;
   }
   
   #reset-button {
     background-color: #4CAF50;
+    color: white;
+  }
+  
+  #restart-button {
+    background-color: red;
     color: white;
   }
   

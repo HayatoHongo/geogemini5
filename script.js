@@ -31,15 +31,40 @@ function initMap() {
   
     const quizInput = document.getElementById('quiz-input');
     const resetButton = document.getElementById('reset-button');
+    const restartButton = document.getElementById('restart-button');
     const okButton = document.getElementById('ok-button');
     const confirmPinButton = document.getElementById('confirm-pin-button');
+    const currentDistanceElement = document.getElementById('current-distance');
+    const totalDistanceElement = document.getElementById('total-distance');
     let currentQuizNumber = null;
+    let totalDistance = 0;
   
     resetButton.addEventListener('click', () => {
       quizInput.value = '';
       currentQuizNumber = null;
+      currentDistanceElement.textContent = '0 km';
+      okButton.classList.add('active');
+      okButton.classList.remove('inactive');
+      okButton.disabled = false;
+      confirmPinButton.classList.add('inactive');
+      confirmPinButton.classList.remove('active');
+      confirmPinButton.disabled = true;
+      if (userPin) {
+        userPin.setMap(null);
+        userPin = null;
+      }
+      if (answerPin) {
+        answerPin.setMap(null);
+        answerPin = null;
+      }
+    });
+  
+    restartButton.addEventListener('click', () => {
+      quizInput.value = '';
+      currentQuizNumber = null;
+      currentDistanceElement.textContent = '0 km';
       totalDistance = 0;
-      document.getElementById('total-distance').textContent = totalDistance.toFixed(2) + ' km';
+      totalDistanceElement.textContent = '0 km';
       okButton.classList.add('active');
       okButton.classList.remove('inactive');
       okButton.disabled = false;
@@ -73,7 +98,10 @@ function initMap() {
     confirmPinButton.addEventListener('click', () => {
       if (userLocation && quizLocations[currentQuizNumber]) {
         const answerLocation = quizLocations[currentQuizNumber];
-        calculateDistance(userLocation.lat, userLocation.lng, answerLocation.lat, answerLocation.lng);
+        const distance = calculateDistance(userLocation.lat, userLocation.lng, answerLocation.lat, answerLocation.lng);
+        currentDistanceElement.textContent = distance.toFixed(2) + ' km';
+        totalDistance += distance;
+        totalDistanceElement.textContent = totalDistance.toFixed(2) + ' km';
         
         if (answerPin) {
           answerPin.setMap(null);
@@ -85,9 +113,6 @@ function initMap() {
         });
       }
     });
-  
-    const totalDistanceElement = document.getElementById('total-distance');
-    let totalDistance = 0;
   
     function calculateDistance(userLat, userLng, answerLat, answerLng) {
       console.log(`User Location: (${userLat}, ${userLng})`);
@@ -101,8 +126,7 @@ function initMap() {
       const distanceInKm = distanceInMeters / 1000; // メートルをキロメートルに変換
       console.log(`Distance in Km: ${distanceInKm}`);
   
-      totalDistance += distanceInKm;
-      totalDistanceElement.textContent = totalDistance.toFixed(2) + ' km';
+      return distanceInKm;
     }
   }
   
