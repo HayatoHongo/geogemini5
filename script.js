@@ -90,12 +90,13 @@ function initMap() {
     let totalDistance = 0;
   
     function calculateDistance(userLat, userLng, answerLat, answerLng) {
-      const distance = google.maps.geometry.spherical.computeDistanceBetween(
+      const distanceInMeters = google.maps.geometry.spherical.computeDistanceBetween(
         new google.maps.LatLng(userLat, userLng),
         new google.maps.LatLng(answerLat, answerLng)
       );
   
-      totalDistance += distance;
+      const distanceInKm = distanceInMeters / 1000; // メートルをキロメートルに変換
+      totalDistance += distanceInKm;
       totalDistanceElement.textContent = totalDistance.toFixed(2) + ' km';
     }
   }
