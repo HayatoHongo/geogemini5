@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>World Map Quiz</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>World Map Quiz</h1>
+  <div id="map-container"></div>
+  <div id="quiz-container">
+    <input type="text" id="quiz-input" placeholder="Enter quiz number">
+    <button id="reset-button">Reset</button>
+    <button id="ok-button" class="active">Confirm Quiz Number</button>
+    <button id="confirm-pin-button" class="inactive" disabled>Confirm Pin</button>
+  </div>
+  <div id="distance-container">
+    <p>Total Distance: <span id="total-distance">0 km</span></p>
+  </div>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD34YsDfPXpA1z880qEFEde2m08GmejOG4&libraries=geometry" async defer></script>
+  <script src="script.js"></script>
+</body>
+</html>
