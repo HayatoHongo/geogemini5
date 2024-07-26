@@ -6,7 +6,7 @@ function initMap() {
     });
   
     const starIcon = {
-      url: 'https://maps.google.com/mapfiles/kml/shapes/star.png', // スターアイコンのURL
+      url: 'https://maps.google.com/mapfiles/kml/paddle/red-stars.png', // スターアイコンのURL
       scaledSize: new google.maps.Size(32, 32) // アイコンのサイズ
     };
   
