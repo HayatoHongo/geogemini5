@@ -6,6 +6,7 @@ function initMap() {
     });
   
     let userPin = null;
+    let userLocation = null;
   
     google.maps.event.addListener(map, 'click', (event) => {
       const latitude = event.latLng.lat();
@@ -19,7 +20,7 @@ function initMap() {
         map: map
       });
   
-      calculateDistance(latitude, longitude);
+      userLocation = { lat: latitude, lng: longitude };
     });
   
     const quizInput = document.getElementById('quiz-input');
@@ -39,6 +40,10 @@ function initMap() {
       confirmPinButton.classList.add('inactive');
       confirmPinButton.classList.remove('active');
       confirmPinButton.disabled = true;
+      if (userPin) {
+        userPin.setMap(null);
+        userPin = null;
+      }
     });
   
     okButton.addEventListener('click', () => {
@@ -52,9 +57,8 @@ function initMap() {
     });
   
     confirmPinButton.addEventListener('click', () => {
-      if (userPin) {
-        // ピンが確定された時の処理をここに追加
-        alert('Pin confirmed!');
+      if (userLocation) {
+        calculateDistance(userLocation.lat, userLocation.lng);
       }
     });
   
