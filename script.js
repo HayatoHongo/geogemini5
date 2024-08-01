@@ -1,3 +1,8 @@
+const apiKey = 'GOOGLE_MAPS_API_KEY'; // プレースホルダーとしてAPIキーを設定
+const script = document.createElement('script');
+script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=geometry&callback=initMap`;
+document.head.appendChild(script);
+
 function initMap() {
     const mapContainer = document.getElementById('map-container');
     const map = new google.maps.Map(mapContainer, {
@@ -6,8 +11,8 @@ function initMap() {
     });
   
     const starIcon = {
-      url: 'https://maps.google.com/mapfiles/kml/paddle/red-stars.png', // 赤い星アイコンのURL
-      scaledSize: new google.maps.Size(32, 32) // アイコンのサイズ
+      url: 'https://maps.google.com/mapfiles/kml/paddle/red-stars.png',
+      scaledSize: new google.maps.Size(32, 32)
     };
   
     let userPin = null;
@@ -123,7 +128,7 @@ function initMap() {
         new google.maps.LatLng(answerLat, answerLng)
       );
   
-      const distanceInKm = distanceInMeters / 1000; // メートルをキロメートルに変換
+      const distanceInKm = distanceInMeters / 1000;
       console.log(`Distance in Km: ${distanceInKm}`);
   
       return distanceInKm;
@@ -135,9 +140,7 @@ function initMap() {
     2: { lat: 34.0522, lng: -118.2437 }, // ロサンゼルス
     3: { lat: 40.7128, lng: -74.0060 }, // ニューヨーク
     4: { lat: -1.2923, lng: 36.82 },
-    5: { lat: 14.527, lng: -90.49} // 
-    // 他のクイズ番号と地点を追加
+    5: { lat: 14.527, lng: -90.49}
   };
   
   google.maps.event.addDomListener(window, 'load', initMap);
-  
