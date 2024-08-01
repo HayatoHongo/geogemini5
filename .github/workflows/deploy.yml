@@ -3,7 +3,7 @@ name: Deploy Website
 on:
   push:
     branches:
-      - main
+      - master  # ブランチ名を 'master' に変更
 
 jobs:
   build:
@@ -13,11 +13,10 @@ jobs:
     - name: Check out the repository
       uses: actions/checkout@v3
 
-    - name: Replace API key in HTML
+    - name: Replace API key in HTML and JS
       run: |
         sed -i 's/GOOGLE_MAPS_API_KEY/${{ secrets.GOOGLE_MAPS_API_KEY }}/g' index.html
-        # 必要に応じて他のファイルにも適用
-        # sed -i 's/GOOGLE_MAPS_API_KEY/${{ secrets.GOOGLE_MAPS_API_KEY }}/g' script.js
+        sed -i 's/GOOGLE_MAPS_API_KEY/${{ secrets.GOOGLE_MAPS_API_KEY }}/g' script.js
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
