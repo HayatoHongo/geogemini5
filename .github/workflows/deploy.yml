@@ -18,6 +18,12 @@ jobs:
         sed -i 's/GOOGLE_MAPS_API_KEY/${{ secrets.GOOGLE_MAPS_API_KEY }}/g' index.html
         sed -i 's/GOOGLE_MAPS_API_KEY/${{ secrets.GOOGLE_MAPS_API_KEY }}/g' script.js
 
+    - name: Verify index.html content
+      run: cat index.html
+
+    - name: Verify script.js content
+      run: cat script.js
+
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
