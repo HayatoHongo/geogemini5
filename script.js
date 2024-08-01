@@ -1,4 +1,4 @@
-const apiKey = 'AIzaSyD34YsDfPXpA1z880qEFEde2m08GmejOG4'; // プレースホルダーとしてAPIキーを設定
+const apiKey = 'GOOGLE_MAPS_API_KEY'; // プレースホルダーとしてAPIキーを設定
 const script = document.createElement('script');
 script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=geometry&callback=initMap`;
 script.async = true;
