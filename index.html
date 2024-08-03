@@ -1,21 +1,18 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>World Map Quiz - Challenge Your Geography Knowledge</title>
+  <title>World Map Quiz</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <h1>World Map Quiz</h1>
   <div id="map-container"></div>
   <div id="quiz-container">
-    <label for="quiz-input">Enter quiz number</label>
     <input type="text" id="quiz-input" placeholder="Enter quiz number">
-    <button id="reset-button" aria-label="Reset the quiz">Reset</button>
-    <button id="restart-button" class="restart" aria-label="Restart the game">Restart Game</button>
-    <button id="ok-button" class="active" aria-label="Confirm quiz number">Confirm Quiz Number</button>
-    <button id="confirm-pin-button" class="inactive" disabled aria-label="Confirm pin location">Confirm Pin</button>
+    <button id="reset-button">Reset</button>
+    <button id="restart-button" class="restart">Restart Game</button>
+    <button id="ok-button" class="active">Confirm Quiz Number</button>
+    <button id="confirm-pin-button" class="inactive" disabled>Confirm Pin</button>
   </div>
   <div id="distance-container">
     <p>Current Quiz Distance: <span id="current-distance">0 km</span></p>
